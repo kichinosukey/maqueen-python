@@ -29,11 +29,6 @@ def test_turn_right():
     turn_right(150, 1500)
     sleep(500)
 
-def test_get_distance():
-    print("【テスト】超音波センサー計測")
-    d = get_distance()
-    print("計測距離: {} cm".format(d))
-
 def main():
     # モータードライバの初期化
     activate_motor_driver()
@@ -43,7 +38,6 @@ def main():
     test_move_backward()
     test_turn_left()
     test_turn_right()
-    test_get_distance()
 
 if __name__ == '__main__':
     main()
