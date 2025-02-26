@@ -1,4 +1,4 @@
-from microbit import i2c, sleep, pin1, pin2
+from microbit import i2c, sleep, pin1, pin2, pin13, pin14
 import utime
 
 # I²Cアドレス（DFRobotのMaqueenでは 0x10 と仮定）
@@ -141,3 +141,16 @@ def get_distance():
     duration = utime.ticks_diff(end, start)
     distance = duration / 58.0
     return distance
+
+def get_line():
+    """ラインセンサーの値を取得する
+
+    左右のラインセンサーのデジタル値を読み取り、(left, right) のタプルとして返します。
+    各値は、0（黒）または1（白）を示すと仮定しています。
+
+    Returns:
+        tuple: (left, right) センサー値
+    """
+    left = pin13.read_digital()
+    right = pin14.read_digital()
+    return (left, right)
